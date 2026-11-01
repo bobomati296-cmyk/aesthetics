@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "aesthetics",
+  "version": "${version}",
+  "name": "Aesthetics",
+  "description": "Presety nieba, jasność i pełna jasność w jaskiniach.",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["com.example.aesthetics.AestheticsClient"]
+  },
+  "mixins": ["aesthetics.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.16.0",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*"
+  }
+}
