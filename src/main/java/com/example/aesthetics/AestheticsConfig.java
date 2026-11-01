@@ -13,12 +13,14 @@ public class AestheticsConfig {
     public static int customR = 120;
     public static int customG = 170;
     public static int customB = 255;
+    public static int saturation = 100; // 0 = szarosc, 100 = normalnie, 200 = mocno
 
     private static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     private static final Path FILE = FabricLoader.getInstance().getConfigDir().resolve("aesthetics.json");
 
     private static class Data {
         boolean fullbright; int preset; int customR; int customG; int customB;
+        Integer saturation;
     }
 
     public static void load() {
@@ -29,6 +31,9 @@ public class AestheticsConfig {
                     fullbright = d.fullbright;
                     preset = Math.max(0, Math.min(d.preset, SkyPreset.values().length - 1));
                     customR = d.customR; customG = d.customG; customB = d.customB;
+                    if (d.saturation != null) {
+                        saturation = Math.max(0, Math.min(d.saturation, 200));
+                    }
                 }
             }
         } catch (Exception e) {
@@ -41,6 +46,7 @@ public class AestheticsConfig {
             Data d = new Data();
             d.fullbright = fullbright; d.preset = preset;
             d.customR = customR; d.customG = customG; d.customB = customB;
+            d.saturation = saturation;
             Files.writeString(FILE, GSON.toJson(d));
         } catch (Exception e) {
             e.printStackTrace();
