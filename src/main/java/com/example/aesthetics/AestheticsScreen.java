@@ -42,16 +42,20 @@ public class AestheticsScreen extends Screen {
             b.setMessage(napisPreset());
         }).dimensions(cx - 100, y + 60, 200, 20).build());
 
+        // Nasycenie nieba: 0 - 200 (100 = normalnie)
+        addDrawableChild(new Suwak(cx - 100, y + 86, 200, 20, "Nasycenie",
+                AestheticsConfig.saturation, 200, v -> AestheticsConfig.saturation = (int) Math.round(v)));
+
         // Wlasne niebo: suwaki R, G, B (dzialaja gdy wybrany preset "Własne")
-        addDrawableChild(new Suwak(cx - 100, y + 86, 200, 20, "Własne niebo – czerwony",
+        addDrawableChild(new Suwak(cx - 100, y + 110, 200, 20, "Własne niebo – czerwony",
                 AestheticsConfig.customR, 255, v -> AestheticsConfig.customR = (int) Math.round(v)));
-        addDrawableChild(new Suwak(cx - 100, y + 110, 200, 20, "Własne niebo – zielony",
+        addDrawableChild(new Suwak(cx - 100, y + 134, 200, 20, "Własne niebo – zielony",
                 AestheticsConfig.customG, 255, v -> AestheticsConfig.customG = (int) Math.round(v)));
-        addDrawableChild(new Suwak(cx - 100, y + 134, 200, 20, "Własne niebo – niebieski",
+        addDrawableChild(new Suwak(cx - 100, y + 158, 200, 20, "Własne niebo – niebieski",
                 AestheticsConfig.customB, 255, v -> AestheticsConfig.customB = (int) Math.round(v)));
 
         addDrawableChild(ButtonWidget.builder(Text.literal("Gotowe"), b -> close())
-                .dimensions(cx - 100, y + 164, 200, 20).build());
+                .dimensions(cx - 100, y + 184, 200, 20).build());
     }
 
     private Text napisFullbright() {
