@@ -17,12 +17,13 @@ jobs:
           java-version: 21
 
       - name: Ustaw Gradle
+        id: gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.10
 
       - name: Zbuduj jar
-        run: gradle build
+        run: ${{ steps.gradle.outputs.gradle-executable }} build
 
       - name: Pobierz jar
         uses: actions/upload-artifact@v4
